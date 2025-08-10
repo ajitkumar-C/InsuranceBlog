@@ -14,7 +14,7 @@ enableRobotsTXT = true
   adsenseClient = "ca-pub-xxxxxxxxxxxxxxxx" # Replace with your AdSense client ID
 
 [outputs]
-  home = ["HTML", "RSS", "JSON"]
+  home = ["HTML"]
 
 [permalinks]
   posts = "/:slug/"
