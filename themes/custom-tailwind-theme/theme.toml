@@ -1,0 +1,8 @@
+name = "Custom Tailwind Theme"
+license = "MIT"
+licenselink = "https://opensource.org/licenses/MIT"
+description = "A modern Hugo theme with TailwindCSS for Insurance Blog"
+homepage = "https://github.com/yourusername/insurance-blog"
+tags = ["blog", "tailwindcss", "responsive", "minimal"]
+features = ["blog", "responsive", "tailwindcss"]
+min_version = "0.80.0"
