@@ -1,0 +1,20 @@
+
+{{ define "main" }}
+<section class="space-y-6">
+  <h1 class="text-2xl font-bold">{{ .Title }}</h1>
+  <div class="space-y-6 mt-4">
+    {{ range .Paginator.Pages }}
+      <article class="bg-white p-4 rounded shadow">
+        <h2 class="text-xl font-semibold"><a class="text-blue-700" href="{{ .Permalink }}">{{ .Title }}</a></h2>
+        <p class="text-sm text-gray-600">{{ .Date.Format "January 2, 2006" }} • {{ .Summary }}</p>
+      </article>
+    {{ end }}
+  </div>
+
+  <!-- Pagination -->
+  <div class="mt-6 flex justify-between">
+    {{ with .Paginator.Prev }}<a class="text-blue-600" href="{{ .URL }}">← Newer</a>{{ end }}
+    {{ with .Paginator.Next }}<a class="text-blue-600" href="{{ .URL }}">Older →</a>{{ end }}
+  </div>
+</section>
+{{ end }}

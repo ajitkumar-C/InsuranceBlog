@@ -1,0 +1,28 @@
+
+{{ define "main" }}
+<article class="bg-white p-6 rounded shadow">
+  <header class="mb-4">
+    <h1 class="text-2xl font-bold text-gray-800">{{ .Title }}</h1>
+    <div class="text-sm text-gray-500 mt-1">Published: {{ .Date.Format "January 2, 2006" }} • Category: {{ with index .Params.categories 0 }}{{ . }}{{ end }}</div>
+  </header>
+
+  {{ if .Params.featured_image }}
+    <img src="{{ .Params.featured_image }}" alt="{{ .Title }}" class="w-full rounded mb-4">
+  {{ end }}
+
+  <div class="prose max-w-none">
+    {{ .Content }}
+  </div>
+
+  <!-- Inline ad placeholder -->
+  <div class="my-6 bg-gray-100 p-4 text-center text-sm text-gray-600">
+    <!-- ADSENSE INLINE SLOT -->
+    Advertisement
+  </div>
+
+  <footer class="mt-6 border-t pt-4 text-sm text-gray-600">
+    <p>Author: {{ .Site.Params.author }}</p>
+    <p>Tags: {{ range .Params.tags }}<a class="text-blue-600 mr-1" href="/tags/{{ . | urlize }}">{{ . }}</a>{{ end }}</p>
+  </footer>
+</article>
+{{ end }}

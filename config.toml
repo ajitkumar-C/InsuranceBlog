@@ -1,0 +1,21 @@
+
+baseURL = "https://www.myinsuranceblog.com/"
+languageCode = "en-us"
+title = "USA Insurance Guide 2025"
+theme = "custom-tailwind-theme"
+paginate = 8
+enableRobotsTXT = true
+
+[params]
+  description = "Expert USA insurance tips, guides, and comparisons for 2025."
+  author = "Ajit"
+  keywords = ["car insurance", "home insurance", "health insurance", "life insurance", "business insurance", "USA insurance"]
+  googleAnalytics = "G-XXXXXXXXXX"  # Replace with your GA4 ID
+  adsenseClient = "ca-pub-xxxxxxxxxxxxxxxx" # Replace with your AdSense client ID
+
+[outputs]
+  home = ["HTML", "RSS", "JSON"]
+
+[permalinks]
+  posts = "/:slug/"
+  categories = "/category/:slug/"

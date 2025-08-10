@@ -1,0 +1,64 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ if .Title }}{{ .Title }} | {{ end }}{{ .Site.Title }}</title>
+  <meta name="description" content="{{ with .Params.description }}{{ . }}{{ else }}{{ .Site.Params.description }}{{ end }}">
+  <meta name="keywords" content="{{ delimit (or .Params.tags .Site.Params.keywords) ", " }}">
+  <link rel="icon" href="/favicon.ico">
+  <!-- Tailwind via CDN for quick setup -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="/css/style.css">
+  {{ if .Site.Params.googleAnalytics }}
+  <!-- Google Analytics 4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id={{ .Site.Params.googleAnalytics }}"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', '{{ .Site.Params.googleAnalytics }}');
+  </script>
+  {{ end }}
+  {{ if .Site.Params.adsenseClient }}
+  <!-- AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client={{ .Site.Params.adsenseClient }}" crossorigin="anonymous"></script>
+  {{ end }}
+</head>
+<body class="bg-gray-50 text-gray-800">
+  {{ partial "header.html" . }}
+
+  <main class="container mx-auto px-4 py-8">
+    <div class="grid md:grid-cols-3 gap-8">
+      <div class="md:col-span-2">
+        {{ block "main" . }}{{ end }}
+      </div>
+      <aside class="md:col-span-1 space-y-6">
+        <!-- AdSense sidebar placeholder -->
+        <div class="bg-white p-4 rounded shadow">
+          <!-- ADSENSE SIDEBAR SLOT -->
+          <div class="text-xs text-gray-500">Ad slot (sidebar)</div>
+        </div>
+
+        <div class="bg-white p-4 rounded shadow">
+          <h3 class="font-semibold mb-2">Categories</h3>
+          <ul class="text-sm space-y-2">
+            {{ range .Site.Taxonomies.categories.ByCount }}
+              <li><a class="text-blue-600" href="{{ .Page.Permalink }}">{{ .Page.Title }}</a></li>
+            {{ end }}
+          </ul>
+        </div>
+
+        <div class="bg-white p-4 rounded shadow">
+          <h3 class="font-semibold mb-2">About</h3>
+          <p class="text-sm text-gray-600">Practical insurance guides focused on the USA market. <a class="text-blue-600" href="/about/">Learn more</a>.</p>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  {{ partial "footer.html" . }}
+  <script src="/js/main.js"></script>
+</body>
+</html>
